@@ -1,0 +1,32 @@
+openapi: 3.0.1
+info:
+  title: Air Sensor API
+  description: Get real-time air quality data (PM2.5) from a live sensor.
+  version: "1.0.0"
+servers:
+  - url: https://<your-render-url>.onrender.com
+paths:
+  /get_readings:
+    get:
+      operationId: getReadings
+      summary: Get air quality readings
+      parameters:
+        - name: X-API-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful air quality data response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  readings:
+                    type: object
+                  status:
+                    type: object
+        "401":
+          description: Unauthorized

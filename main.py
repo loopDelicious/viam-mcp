@@ -1,4 +1,6 @@
 from fastapi import FastAPI, Request, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 import asyncio
 import os
 from dotenv import load_dotenv
@@ -10,10 +12,18 @@ load_dotenv()
 
 app = FastAPI()
 
+# CORS for ChatGPT plugin compatibility
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://chat.openai.com"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 LOCAL_API_KEY = os.getenv("LOCAL_API_KEY")
 
 # EPA AQI Breakpoints for PM2.5 (ug/m3)
-# Based on 24-hour average
 PM25_BUCKETS = [
     (0.0, 12.0, "good"),
     (12.1, 35.4, "moderate"),
@@ -37,7 +47,6 @@ def bucket_pm25(value):
 
 def assess_air_quality(readings):
     status = {}
-    # Use pm2_5_atm or pm2_5_CF1 if available
     pm25 = readings.get("pm2_5_atm") or readings.get("pm2_5_CF1")
     if pm25 is not None:
         status["pm2_5_category"] = bucket_pm25(pm25)
@@ -80,3 +89,11 @@ def ping():
 @app.get("/")
 def root():
     return {"message": "Air Sensor API is running"}
+
+@app.get("/.well-known/ai-plugin.json", include_in_schema=False)
+def serve_manifest():
+    return FileResponse(".well-known/ai-plugin.json", media_type="application/json")
+
+@app.get("/openapi.yaml", include_in_schema=False)
+def serve_openapi():
+    return FileResponse("openapi.yaml", media_type="text/yaml")
