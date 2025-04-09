@@ -4,7 +4,7 @@ info:
   description: Get real-time air quality data (PM2.5) from a live sensor.
   version: "1.0.0"
 servers:
-  - url: https://<your-render-url>.onrender.com
+  - url: https://viam-mcp.onrender.com
 paths:
   /get_readings:
     get:
