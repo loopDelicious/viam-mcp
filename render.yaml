@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: air-sensor-api
+    runtime: python
+    buildCommand: ""
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: VIAM_API_KEY
+        sync: false
+      - key: VIAM_API_KEY_ID
+        sync: false
+      - key: VIAM_ROBOT_ADDR
+        sync: false
+      - key: LOCAL_API_KEY
+        sync: false

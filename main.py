@@ -50,3 +50,7 @@ async def get_readings(request: Request):
 @app.get("/ping")
 def ping():
     return {"message": "pong"}
+
+@app.get("/")
+def root():
+    return {"message": "Air Sensor API is running"}
