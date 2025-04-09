@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+viam-sdk
+python-dotenv
