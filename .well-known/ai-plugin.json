@@ -10,7 +10,7 @@
     },
     "api": {
       "type": "openapi",
-      "url": "https://viam-mcp.onrender.com/openapi.yaml",
+      "url": "https://viam-mcp.onrender.com/.well-known/ai-plugin.json",
       "is_user_authenticated": true
     },
     "logo_url": "https://github.com/viam-devrel.png",
