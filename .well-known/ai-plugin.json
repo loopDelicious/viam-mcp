@@ -3,7 +3,7 @@
   "name_for_human": "Live Sensor Data for Viam Robots",
   "name_for_model": "sensorData",
   "description_for_human": "Access real-time readings from air quality and presence sensors.",
-  "description_for_model": "Get live sensor readings from Viam-powered robots, including PM2.5 air quality data and presence detection status.",
+  "description_for_model": "Call live endpoints to get real-time sensor readings from Viam-powered robots, including air quality and presence detection.",
   "auth": {
     "type": "user_http"
   },
