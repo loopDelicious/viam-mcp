@@ -94,4 +94,4 @@ def serve_manifest():
 
 @app.get("/openapi.yaml", include_in_schema=False)
 def serve_openapi():
-    return FileResponse("openapi.yaml", media_type="text/yaml")
+    return FileResponse("openapi.yaml", media_type="application/yaml")
