@@ -22,9 +22,12 @@ async def get_presence_readings():
         readings = await sensor.get_readings()
         await robot.close()
 
+        print(f"[DEBUG] Raw readings: {readings} (type: {type(readings)})")
+        status = readings.get("detection_status") if isinstance(readings, dict) else None
+
         return {
             "readings": readings,
-            "status": readings.get("detection_status")  # safer access
+            "presence_state": status
         }
     except Exception as e:
         print("Error in get_presence_readings:", e)
