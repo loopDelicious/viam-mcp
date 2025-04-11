@@ -2,3 +2,4 @@ fastapi
 uvicorn
 viam-sdk
 python-dotenv
+httpx
