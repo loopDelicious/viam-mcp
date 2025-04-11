@@ -1,19 +1,18 @@
 {
-    "schema_version": "v1",
-    "name_for_human": "Air Sensor",
-    "name_for_model": "airSensor",
-    "description_for_human": "Check the air quality (PM2.5) using a live sensor.",
-    "description_for_model": "Get air quality readings including PM2.5 concentration and EPA classification.",
-    "auth": {
-      "type": "user_http"
-    },
-    "api": {
-      "type": "openapi",
-      "url": "https://viam-mcp.onrender.com/openapi.yaml",
-      "is_user_authenticated": true
-    },
-    "logo_url": "https://github.com/viam-devrel.png",
-    "contact_email": "joyce.lin@viam.com",
-    "legal_info_url": "https://www.viam.com/terms"
-  }
-  
+  "schema_version": "v1",
+  "name_for_human": "Live Sensor Data for Viam Robots",
+  "name_for_model": "sensorData",
+  "description_for_human": "Access real-time readings from air quality and presence sensors.",
+  "description_for_model": "Get live sensor readings from Viam-powered robots, including PM2.5 air quality data and presence detection status.",
+  "auth": {
+    "type": "user_http"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://viam-mcp.onrender.com/openapi.yaml",
+    "is_user_authenticated": true
+  },
+  "logo_url": "https://github.com/viam-devrel.png",
+  "contact_email": "joyce.lin@viam.com",
+  "legal_info_url": "https://www.viam.com/terms"
+}

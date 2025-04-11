@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: Air Sensor API
-  description: Get real-time air quality data (PM2.5) from a live sensor.
+  title: Live Sensor Data for Viam Robots
+  description: Get real-time air quality and presence detection data from live sensors.
   version: "1.0.0"
 servers:
   - url: https://viam-mcp.onrender.com
@@ -30,6 +30,7 @@ paths:
                     type: object
         "401":
           description: Unauthorized
+
   /history:
     get:
       operationId: getHistory
@@ -58,5 +59,31 @@ paths:
                           format: date-time
                         data:
                           type: object
+        "401":
+          description: Unauthorized
+
+  /presence:
+    get:
+      operationId: getPresence
+      summary: Get real-time presence detection readings
+      parameters:
+        - name: X-API-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Presence detection data response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  readings:
+                    type: object
+                  presence_state:
+                    type: string
+                    example: "Static Target"
         "401":
           description: Unauthorized
