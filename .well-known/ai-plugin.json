@@ -5,8 +5,7 @@
     "description_for_human": "Check the air quality (PM2.5) using a live sensor.",
     "description_for_model": "Get air quality readings including PM2.5 concentration and EPA classification.",
     "auth": {
-      "type": "user_http",
-      "authorization_type": "bearer"
+      "type": "user_http"
     },
     "api": {
       "type": "openapi",

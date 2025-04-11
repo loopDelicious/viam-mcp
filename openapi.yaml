@@ -30,3 +30,33 @@ paths:
                     type: object
         "401":
           description: Unauthorized
+  /history:
+    get:
+      operationId: getHistory
+      summary: Get historical air quality readings (last 24 hours)
+      parameters:
+        - name: X-API-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Historical air quality data response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                        data:
+                          type: object
+        "401":
+          description: Unauthorized
