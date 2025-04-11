@@ -22,7 +22,6 @@ async def get_presence_readings():
         readings = await sensor.get_readings()
         await robot.close()
 
-        print(f"[DEBUG] Raw readings: {readings} (type: {type(readings)})")
         status = readings.get("detection_status") if isinstance(readings, dict) else None
 
         return {
@@ -37,5 +36,5 @@ async def get_presence_readings():
 async def start_logger():
     while True:
         result = await get_presence_readings()
-        print(f"[{datetime.utcnow().isoformat()}] Presence: {result}")
+        # print(f"[{datetime.utcnow().isoformat()}] Presence: {result}")
         await asyncio.sleep(LOG_INTERVAL_SECONDS)
